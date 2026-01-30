@@ -1,0 +1,10 @@
+def fibo(n):
+    prev2 = 0
+    prev = 1
+    for i in range(2,n+1):#t.c=O(N)
+        curr = prev+prev2#S.C=O(N)
+        prev2 = prev
+        prev = curr
+    return prev
+n = int(input())
+print(fibo(n))
