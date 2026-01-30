@@ -1,0 +1,9 @@
+def fibo(n,dp):
+    dp[0] = 0
+    dp[1] = 1
+    for ind in range(2,n+1):#T.C=O(N)
+        dp[ind] = dp[ind-1]+dp[ind-2]
+    return dp[n]
+n = int(input())
+dp = [-1]*(n+1)#s.c=O(N)
+print(fibo(n,dp))
