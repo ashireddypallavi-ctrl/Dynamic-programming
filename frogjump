@@ -1,0 +1,22 @@
+from os import *
+from sys import *
+from collections import *
+from math import *
+
+from typing import *
+def frogJump(n: int, heights: List[int]) -> int:
+    #heights = [30,10,60,10,60,50]
+    def backtrack(ind,heights,dp):
+        if(ind == 0):
+            return 0
+        if(dp[ind]!=-1):
+            return dp[ind]
+        oneJump = backtrack(ind-1,heights,dp)+abs(heights[ind]-heights[ind-1])
+        twoJump = float("inf")
+        if(ind>1):
+            twoJump = backtrack(ind-2,heights,dp)+abs(heights[ind]-heights[ind-2])
+        dp[ind] = min(oneJump,twoJump)
+        return dp[ind]
+    dp = [-1]*n
+    ind = n-1
+    return backtrack(ind,heights,dp)
